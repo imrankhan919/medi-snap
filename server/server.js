@@ -27,6 +27,16 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+// Default Route
+app.get("/", (req, res) => {
+    res.json({
+        msg: "WELCOME TO MEDI_SNAP"
+    })
+})
+
+
+
+
 app.post("/analyze", upload.single("image"), async (req, res) => {
     try {
         const filePath = req.file.path;
